@@ -1,0 +1,32 @@
+header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 32px 0;
+  font-family: 'Inter';
+  background: rgb(52, 51, 51);
+  background: linear-gradient(
+    90deg,
+    rgba(52, 51, 51, 1) 0%,
+    rgba(72, 72, 72, 1) 70%,
+    rgba(40, 40, 40, 1) 100%
+  );
+  nav {
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .links-container {
+      display: flex;
+      gap: 24px;
+    }
+    a {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: white;
+    }
+  }
+}
