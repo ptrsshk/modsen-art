@@ -52,7 +52,9 @@ export const Gallery: FC = () => {
       </div>
       <div className="gallery-container">
         {loading ? (
-          <div className="loader"></div>
+          <div className="loader-container">
+            <div className="loader"></div>
+          </div>
         ) : (
           <>
             <div className="artworks-container">
@@ -70,50 +72,47 @@ export const Gallery: FC = () => {
                     })
                 : 'loading'}
             </div>
-            <div className="gallery-pagination">
-              {page !== 1 ? (
-                <button
-                  className="pagination-btn arrow"
-                  onClick={handlePrevPage}
-                >
-                  <ArrowIcon rotate={180} />
-                </button>
-              ) : null}
-
-              <button
-                className={isActiveSubPage(1)}
-                id="1"
-                onClick={handleSubpageChange}
-              >
-                {1 + (page - 1) * 4}
-              </button>
-              <button
-                className={isActiveSubPage(2)}
-                id="2"
-                onClick={handleSubpageChange}
-              >
-                {2 + (page - 1) * 4}
-              </button>
-              <button
-                className={isActiveSubPage(3)}
-                id="3"
-                onClick={handleSubpageChange}
-              >
-                {3 + (page - 1) * 4}
-              </button>
-              <button
-                className={isActiveSubPage(4)}
-                id="4"
-                onClick={handleSubpageChange}
-              >
-                {4 + (page - 1) * 4}
-              </button>
-              <button className="pagination-btn arrow" onClick={handleNextPage}>
-                <ArrowIcon />
-              </button>
-            </div>
           </>
         )}
+        <div className="gallery-pagination">
+          {page !== 1 ? (
+            <button className="pagination-btn arrow" onClick={handlePrevPage}>
+              <ArrowIcon rotate={180} />
+            </button>
+          ) : null}
+
+          <button
+            className={isActiveSubPage(1)}
+            id="1"
+            onClick={handleSubpageChange}
+          >
+            {1 + (page - 1) * 4}
+          </button>
+          <button
+            className={isActiveSubPage(2)}
+            id="2"
+            onClick={handleSubpageChange}
+          >
+            {2 + (page - 1) * 4}
+          </button>
+          <button
+            className={isActiveSubPage(3)}
+            id="3"
+            onClick={handleSubpageChange}
+          >
+            {3 + (page - 1) * 4}
+          </button>
+          <button
+            className={isActiveSubPage(4)}
+            id="4"
+            onClick={handleSubpageChange}
+          >
+            {4 + (page - 1) * 4}
+          </button>
+          <button className="pagination-btn arrow" onClick={handleNextPage}>
+            <ArrowIcon rotate={0} />
+          </button>
+        </div>
       </div>
     </section>
   )

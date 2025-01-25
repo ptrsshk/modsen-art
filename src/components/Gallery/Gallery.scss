@@ -1,6 +1,7 @@
 .gallery-section {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 40px;
   .header-container {
     text-align: center;
@@ -20,6 +21,7 @@
     }
     .gallery-pagination {
       display: flex;
+      justify-content: flex-end;
       gap: 8px;
       .pagination-btn {
         font-size: 18px;
@@ -31,7 +33,7 @@
           background-color: #f1780040;
         }
         &.active {
-          background-color: #F17900;
+          background-color: #f17900;
           color: white;
           font-weight: 600;
         }
@@ -45,13 +47,22 @@
     }
   }
 }
+.loader-container {
+  height: 534px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .loader {
-  margin: 270px auto;
   width: 70px;
   aspect-ratio: 1;
   border-radius: 50%;
   border: 8px solid;
-  border-color: #F17900 #0000;
+  border-color: #f17900 #0000;
   animation: l1 1s infinite;
 }
-@keyframes l1 {to{transform: rotate(.5turn)}}
+@keyframes l1 {
+  to {
+    transform: rotate(0.5turn);
+  }
+}
