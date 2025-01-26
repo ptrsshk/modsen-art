@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import { IArtworkDetailed, IFavorite } from '../../types/types'
 import { BookmarkButton } from '../BookmarkButton'
+import { MuseumIcon } from '../Icons/MuseumIcon'
 
 export const ArtworkDetailed: FC<IArtworkDetailed> = ({
   id,
@@ -29,10 +30,17 @@ export const ArtworkDetailed: FC<IArtworkDetailed> = ({
   return (
     <>
       <div className="image-container">
-        <img
-          src={`https://www.artic.edu/iiif/2/${image_id}/full/500,/0/default.jpg`}
-          alt=""
-        />
+        {image_id ? (
+          <img
+            src={`https://www.artic.edu/iiif/2/${image_id}/full/400,/0/default.jpg`}
+            alt="image"
+            className="artwork-image"
+          />
+        ) : (
+          <div className="museum-icon-container">
+            <MuseumIcon />
+          </div>
+        )}
         <BookmarkButton
           setIsBookmarked={setIsBookmarked}
           isBookmarked={isBookmarked}
