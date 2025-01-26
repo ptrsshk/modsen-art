@@ -1,0 +1,26 @@
+.favourites-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+  h1 {
+    display: flex;
+    flex-direction: column;
+    text-transform: capitalize;
+    font-size: 64px;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 80px;
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    svg {
+      display: inline;
+      width: 74px;
+      height: 74px;
+      margin-right: 10px;
+    }
+  }
+}

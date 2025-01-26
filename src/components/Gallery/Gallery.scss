@@ -3,16 +3,6 @@
   flex-direction: column;
   width: 100%;
   gap: 40px;
-  .header-container {
-    text-align: center;
-    font-weight: 400;
-    p {
-      font-size: 16px;
-    }
-    h3 {
-      font-size: 32px;
-    }
-  }
   .gallery-container {
     min-height: 600px;
     .artworks-container {
@@ -45,10 +35,23 @@
         }
       }
     }
+    .loader-container {
+      height: 534px;
+    }
+  }
+}
+.header-container {
+  text-align: center;
+  font-weight: 400;
+  p {
+    font-size: 16px;
+  }
+  h3 {
+    font-size: 32px;
   }
 }
 .loader-container {
-  height: 534px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;

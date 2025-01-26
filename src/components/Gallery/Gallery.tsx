@@ -1,32 +1,25 @@
-import { FC, MouseEvent, TouchEvent, useEffect, useState } from 'react'
+import {
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  TouchEvent,
+  useState,
+} from 'react'
 import { ArtworkVariant } from '../../consts/ArtworkVariant'
-import { IArtwork } from '../../types/types'
-import { Artwork } from '../Artwork/Artwork'
+import { IArtworkCard } from '../../types/types'
+import { ArtworkCard } from '../ArtworkCard/ArtworkCard'
 import './Gallery.scss'
-import { fetchArtworksWithPagination } from '../../api'
 import { ArrowIcon } from '../Icons/ArrowIcon'
 
-export const Gallery: FC = () => {
-  const [artworks, setArtworks] = useState<IArtwork[] | null>()
-  const [page, setPage] = useState(1)
+interface GalleryProps {
+  artworks: IArtworkCard[] | null | undefined
+  page: number
+  setPage: Dispatch<SetStateAction<number>>
+  loading: boolean
+}
+
+export const Gallery = ({ artworks, page, setPage, loading }: GalleryProps) => {
   const [subpage, setSubPage] = useState(1)
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true)
-      try {
-        const res = await fetchArtworksWithPagination(page)
-        setArtworks(res.data)
-      } catch (error) {
-        console.error('Fetch error: ', error)
-      } finally {
-        setLoading(false)
-      }
-    }
-
-    fetchData()
-  }, [page])
 
   const handleSubpageChange = (
     event: MouseEvent<HTMLButtonElement> | TouchEvent<HTMLButtonElement>
@@ -63,7 +56,7 @@ export const Gallery: FC = () => {
                     .slice(3 * (subpage - 1), 3 + 3 * (subpage - 1))
                     .map((artwork) => {
                       return (
-                        <Artwork
+                        <ArtworkCard
                           key={artwork.id}
                           {...artwork}
                           variant={ArtworkVariant.big}

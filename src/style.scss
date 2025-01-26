@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
 html {
   font-family: 'Lexend Deca';
+  color: #393939;
 }
 ::-webkit-scrollbar {
   width: 0;
@@ -15,6 +16,7 @@ html {
 main {
   max-width: 1280px;
   width: 100%;
+  min-height: calc(100vh - 127px);
   margin: 0 25px;
   display: flex;
   flex-direction: column;

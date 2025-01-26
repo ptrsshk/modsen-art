@@ -1,0 +1,47 @@
+.other-section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+}
+.small-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  .loader-container {
+    height: 422px;
+  }
+}
+.small.artwork-card {
+  display: flex;
+  max-width: 416px;
+  flex-grow: 1;
+  background-color: white;
+  padding: 25px 13px;
+  gap: 16px;
+  img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+  }
+  .artwork-description {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    font-family: Inter;
+    cursor: pointer;
+  }
+}
+.artwork-description {
+  .description-container {
+    h5 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+    .domain {
+      font-weight: 700;
+      margin-top: 12px;
+    }
+  }
+}
