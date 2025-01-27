@@ -1,7 +1,8 @@
+import { FC } from 'react'
 import { SearchForm } from './SearchForm'
 import './SearchSection.scss'
 
-export const SearchSection = () => {
+export const SearchSection: FC = () => {
   return (
     <section className="search-section">
       <h1>

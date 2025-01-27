@@ -4,8 +4,9 @@ import { FavouritesPage } from '../pages/FavouritesPage'
 import { FAVOURITES_ROUTE } from '../consts/routes'
 import { ArtworkPage } from '../pages/ArtworkPage'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import { FC } from 'react'
 
-export const AppRouter = () => {
+export const AppRouter: FC = () => {
   return (
     <main>
       <Routes>

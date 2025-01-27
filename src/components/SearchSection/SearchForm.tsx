@@ -1,10 +1,11 @@
+import { FC } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 interface SearchForm {
   q: string
 }
 
-export const SearchForm = () => {
+export const SearchForm: FC = () => {
   const { register, handleSubmit } = useForm<SearchForm>()
 
   const submit: SubmitHandler<SearchForm> = (data) => {

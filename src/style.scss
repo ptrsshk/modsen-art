@@ -14,15 +14,14 @@ html {
   background-color: #fafafa;
 }
 main {
-  max-width: 1280px;
+  max-width: 1330px;
   width: 100%;
   min-height: calc(100vh - 127px);
-  margin: 0 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 120px;
-  padding: 120px 0;
+  padding: 120px 25px;
 }
 .highlight {
   color: #e0a449;

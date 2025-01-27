@@ -5,8 +5,9 @@ import { HomeIcon } from '../Icons/HomeIcon'
 import { BookmarkIcon } from '../Icons/BookmarkIcon'
 import './Header.scss'
 import { MuseumWithTextIcon } from '../Icons/MuseumWithTextIcon'
+import { FC } from 'react'
 
-export const Header = () => {
+export const Header: FC = () => {
   const location = useLocation()
   return (
     <header>

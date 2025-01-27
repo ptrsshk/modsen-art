@@ -1,5 +1,6 @@
 import {
   Dispatch,
+  FC,
   MouseEvent,
   SetStateAction,
   TouchEvent,
@@ -18,7 +19,12 @@ interface GalleryProps {
   loading: boolean
 }
 
-export const Gallery = ({ artworks, page, setPage, loading }: GalleryProps) => {
+export const Gallery: FC<GalleryProps> = ({
+  artworks,
+  page,
+  setPage,
+  loading,
+}) => {
   const [subpage, setSubPage] = useState(1)
 
   const handleSubpageChange = (

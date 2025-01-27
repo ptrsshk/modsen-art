@@ -2,13 +2,14 @@ import { IArtworkCard } from '../../types/types'
 import { ArtworkCard } from '../ArtworkCard/ArtworkCard'
 import { ArtworkVariant } from '../../consts/ArtworkVariant'
 import './Other.scss'
+import { FC } from 'react'
 
 interface OtherProps {
   artworks: IArtworkCard[] | null | undefined
   loading: boolean
 }
 
-export const Other = ({ artworks, loading }: OtherProps) => {
+export const Other: FC<OtherProps> = ({ artworks, loading }) => {
   return (
     <section className="other-section">
       <div className="header-container">
