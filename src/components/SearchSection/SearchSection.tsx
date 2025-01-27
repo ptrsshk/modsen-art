@@ -17,7 +17,7 @@ export const SearchSection: FC = () => {
         <div className="loader-container">
           <div className="loader"></div>
         </div>
-      ) : results ? (
+      ) : results.length >= 1 ? (
         <SearchResults results={results} />
       ) : null}
     </section>

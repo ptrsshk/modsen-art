@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 72px;
   h1 {
     text-transform: capitalize;
     font-size: 64px;
     max-width: 684px;
     text-align: center;
     font-weight: 700;
+    margin-bottom: 72px;
   }
   form {
     display: flex;
@@ -37,6 +37,24 @@
       font-size: 14px;
       display: flex;
       flex-grow: 1;
+    }
+  }
+  .search-results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 20px;
+    .sort-selector-container {
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      font-family: Inter;
+      gap: 20px;
+      select {
+        background-color: #3939390D;
+        padding: 5px;
+        border-radius: 10px;
+      }
     }
   }
 }
