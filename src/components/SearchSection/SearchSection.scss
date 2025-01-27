@@ -1,6 +1,7 @@
 .search-section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 72px;
   h1 {
     text-transform: capitalize;
@@ -9,13 +10,28 @@
     text-align: center;
     font-weight: 700;
   }
+  form {
+    display: flex;
+    flex-direction: column;
+    max-width: 760px;
+    width: 100%;
+    .errors {
+      color: rgb(171, 23, 23);
+      font-family: Inter;
+      font-size: 14px;
+      margin-top: 10px;
+      padding-left: 17px;
+    }
+  }
   .search-bar {
     display: flex;
+    flex-grow: 1;
     max-width: 762px;
     padding: 16px;
     border-radius: 16px;
     gap: 16px;
     background-color: #3939390D;
+    
     input {
       font-family: Inter;
       font-size: 14px;

@@ -1,26 +1,62 @@
-import { FC } from 'react'
+import { Dispatch, FC, SetStateAction, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-
-interface SearchForm {
+import { search } from '../../api'
+import { IArtworkCard } from '../../types/types'
+import { useDebounce } from '../../hooks/useDebounce'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { schema } from './schema'
+import { SearchIcon } from '../Icons/SearchIcon'
+interface SearchData {
   q: string
 }
+interface SearchForm {
+  setResults: Dispatch<SetStateAction<IArtworkCard[]>>
+  setLoading: Dispatch<SetStateAction<boolean>>
+}
 
-export const SearchForm: FC = () => {
-  const { register, handleSubmit } = useForm<SearchForm>()
+export const SearchForm: FC<SearchForm> = ({ setResults, setLoading }) => {
+  const {
+    register,
+    watch,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<SearchData>({
+    mode: 'onChange',
+    resolver: yupResolver(schema),
+  })
+  const inputValue = watch('q')
+  const debouncedInputValue = useDebounce(inputValue, 750)
 
-  const submit: SubmitHandler<SearchForm> = (data) => {
-    console.log(data)
-  }
+  useEffect(() => {
+    const submit: SubmitHandler<SearchData> = async (data) => {
+      setLoading(true)
+      try {
+        const result = await search(data.q)
+        console.log(result)
+        setResults(result)
+      } catch (error) {
+        alert(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    if (debouncedInputValue && !errors.q) {
+      submit({ q: debouncedInputValue })
+    } else {
+      setResults([])
+    }
+  }, [debouncedInputValue, errors.q, setLoading, setResults])
 
   return (
-    <form onSubmit={handleSubmit(submit)}>
+    <form onSubmit={handleSubmit(() => {})}>
       <div className="search-bar">
         <input
           {...register('q', { required: true })}
           placeholder="Search art, artist, work..."
         />
-        <button>&#128269;</button>
+        <SearchIcon />
       </div>
+      <p className="errors">{errors.q?.message}</p>
     </form>
   )
 }
