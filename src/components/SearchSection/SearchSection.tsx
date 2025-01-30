@@ -1,7 +1,9 @@
-import { FC, useState } from 'react'
-import { SearchForm } from './SearchForm'
 import './SearchSection.scss'
+
+import { FC, useState } from 'react'
+
 import { IArtworkCard } from '../../types/types'
+import { SearchForm } from './SearchForm'
 import { SearchResults } from './SearchResults'
 
 export const SearchSection: FC = () => {

@@ -1,11 +1,12 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Dispatch, FC, SetStateAction, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+
 import { search } from '../../api'
-import { IArtworkCard } from '../../types/types'
 import { useDebounce } from '../../hooks/useDebounce'
-import { yupResolver } from '@hookform/resolvers/yup'
-import { schema } from './schema'
+import { IArtworkCard } from '../../types/types'
 import { SearchIcon } from '../Icons/SearchIcon'
+import { schema } from './schema'
 interface SearchData {
   q: string
 }

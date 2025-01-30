@@ -1,8 +1,10 @@
+import './Other.scss'
+
+import { FC } from 'react'
+
+import { ArtworkVariant } from '../../consts/ArtworkVariant'
 import { IArtworkCard } from '../../types/types'
 import { ArtworkCard } from '../ArtworkCard/ArtworkCard'
-import { ArtworkVariant } from '../../consts/ArtworkVariant'
-import './Other.scss'
-import { FC } from 'react'
 
 interface OtherProps {
   artworks: IArtworkCard[] | null | undefined

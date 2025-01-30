@@ -1,9 +1,11 @@
-import { FC, useEffect, useState } from 'react'
-import { fetchArtwork } from '../api'
-import { useLocation } from 'react-router'
 import './ArtworkPage.scss'
-import { IArtworkDetailed } from '../types/types'
+
+import { FC, useEffect, useState } from 'react'
+import { useLocation } from 'react-router'
+
+import { fetchArtwork } from '../api'
 import { ArtworkDetailed } from '../components/ArtworkDetailed/ArtworkDetailed'
+import { IArtworkDetailed } from '../types/types'
 
 export const ArtworkPage: FC = () => {
   const [loading, setLoading] = useState(false)

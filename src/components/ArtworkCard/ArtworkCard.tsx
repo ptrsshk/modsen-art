@@ -1,10 +1,12 @@
-import { FC, useEffect, useState } from 'react'
-import { MuseumIcon } from '../Icons/MuseumIcon'
-import { ArtworkVariant } from '../../consts/ArtworkVariant'
 import './ArtworkCard.scss'
+
+import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
-import { BookmarkButton } from '../BookmarkButton'
+
+import { ArtworkVariant } from '../../consts/ArtworkVariant'
 import { IFavorite } from '../../types/types'
+import { BookmarkButton } from '../BookmarkButton'
+import { MuseumIcon } from '../Icons/MuseumIcon'
 
 interface ArtworkCardProps {
   title: string

@@ -1,8 +1,10 @@
-import { Link } from 'react-router'
 import './Footer.scss'
-import { MuseumWithTextIcon } from '../Icons/MuseumWithTextIcon'
+
 import { FC } from 'react'
+import { Link } from 'react-router'
+
 import { ModsenIcon } from '../Icons/ModsenIcon'
+import { MuseumWithTextIcon } from '../Icons/MuseumWithTextIcon'
 
 export const Footer: FC = () => {
   return (

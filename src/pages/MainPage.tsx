@@ -1,4 +1,5 @@
-import { useState, useEffect, FC } from 'react'
+import { FC, useEffect, useState } from 'react'
+
 import { fetchArtworksWithPagination } from '../api'
 import { Gallery } from '../components/Gallery/Gallery'
 import { Other } from '../components/Other/Other'

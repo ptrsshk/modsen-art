@@ -1,7 +1,8 @@
 import { FC, useState } from 'react'
+
+import { ArtworkVariant } from '../../consts/ArtworkVariant'
 import { IArtworkCard } from '../../types/types'
 import { ArtworkCard } from '../ArtworkCard/ArtworkCard'
-import { ArtworkVariant } from '../../consts/ArtworkVariant'
 
 interface SearchResults {
   results: IArtworkCard[]

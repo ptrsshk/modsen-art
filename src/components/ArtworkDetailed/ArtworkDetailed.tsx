@@ -1,4 +1,5 @@
 import { FC, useState } from 'react'
+
 import { IArtworkDetailed, IFavorite } from '../../types/types'
 import { BookmarkButton } from '../BookmarkButton'
 import { MuseumIcon } from '../Icons/MuseumIcon'

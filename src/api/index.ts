@@ -1,4 +1,5 @@
 import axios from 'axios'
+
 import { IArtworkCard } from '../types/types'
 
 const $host = axios.create({

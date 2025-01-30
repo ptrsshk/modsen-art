@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import { IFavorite } from '../types/types'
 
 interface BookmarkButtonProps {
