@@ -3,16 +3,16 @@ import './ArtworkCard.scss'
 import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
-import { ArtworkVariant } from '../../consts/ArtworkVariant'
+import { ArtworkVariant } from '../../constants/ArtworkVariant'
 import { IFavorite } from '../../types/types'
 import { BookmarkButton } from '../BookmarkButton'
 import { MuseumIcon } from '../Icons/MuseumIcon'
 
 interface ArtworkCardProps {
-  title: string
-  artist_title: string
-  is_public_domain: boolean
-  image_id: string
+  title: string | null
+  artist_title: string | null
+  is_public_domain: boolean | null
+  image_id: string | null
   variant: ArtworkVariant
   id: number
 }

@@ -1,0 +1,62 @@
+import { makeAutoObservable } from 'mobx'
+import { useContext } from 'react'
+
+import { fetchArtworksWithPagination } from '../../api'
+import { ArtworkContext } from '../../main'
+import { IArtworkDetailed } from '../../types/types'
+
+export default class ArtworksStore {
+  private _artworks: IArtworkDetailed[]
+  private _page: number
+  private _isLoading: boolean
+  constructor() {
+    this._artworks = []
+    this._page = 1
+    this._isLoading = true
+    makeAutoObservable(this)
+  }
+
+  setArtworks(artworks: IArtworkDetailed[]) {
+    this._artworks = artworks
+  }
+  get artworks() {
+    return this._artworks
+  }
+
+  setPage(page: number) {
+    this._page = page
+    this.fetchArtworks(page)
+  }
+  get page() {
+    return this._page
+  }
+
+  setIsLoading(isLoading: boolean) {
+    this._isLoading = isLoading
+  }
+  get isLoading() {
+    return this._isLoading
+  }
+
+  fetchArtworks(page: number = 1) {
+    this.setIsLoading(true)
+    fetchArtworksWithPagination(page)
+      .then((res) => {
+        this.setArtworks(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      .finally(() => {
+        this.setIsLoading(false)
+      })
+  }
+}
+
+export const useArtworksContext = () => {
+  const artworks = useContext(ArtworkContext)
+  if (artworks === undefined) {
+    throw new Error('useArtworksContext must be used with a ArtworksContext')
+  }
+  return artworks
+}

@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { useLocation } from 'react-router'
 import { Link } from 'react-router'
 
-import { FAVOURITES_ROUTE } from '../../consts/routes'
+import { FAVOURITES_ROUTE } from '../../constants/consts'
 import { BookmarkIcon } from '../Icons/BookmarkIcon'
 import { HomeIcon } from '../Icons/HomeIcon'
 import { MuseumWithTextIcon } from '../Icons/MuseumWithTextIcon'

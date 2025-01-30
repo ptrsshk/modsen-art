@@ -5,7 +5,7 @@ import { FC, useEffect, useState } from 'react'
 import { fetchFavouriteArtwork } from '../api'
 import { ArtworkCard } from '../components/ArtworkCard/ArtworkCard'
 import { BookmarkIcon } from '../components/Icons/BookmarkIcon'
-import { ArtworkVariant } from '../consts/ArtworkVariant'
+import { ArtworkVariant } from '../constants/ArtworkVariant'
 import { IArtworkCard, IFavorite } from '../types/types'
 
 export const FavouritesPage: FC = () => {

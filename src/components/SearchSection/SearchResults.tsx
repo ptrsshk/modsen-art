@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 
-import { ArtworkVariant } from '../../consts/ArtworkVariant'
+import { ArtworkVariant } from '../../constants/ArtworkVariant'
 import { IArtworkCard } from '../../types/types'
 import { ArtworkCard } from '../ArtworkCard/ArtworkCard'
 
