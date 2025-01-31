@@ -9,7 +9,7 @@ import { useArtworksContext } from '../store/artworksStore'
 import { WithLoader } from '../WithLoader'
 
 export const Other: FC = observer(() => {
-  const artworksStore = useArtworksContext()
+  const { artworks, error, isLoading } = useArtworksContext()
 
   return (
     <section className="other-section">
@@ -18,22 +18,28 @@ export const Other: FC = observer(() => {
         <h3>Other topics for you</h3>
       </div>
       <div className="small-card-container">
-        <WithLoader isLoading={artworksStore.isLoading}>
-          {artworksStore.artworks
-            .slice(3)
-            .map(({ title, artist_title, image_id, is_public_domain, id }) => {
-              return (
-                <ArtworkCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  artist_title={artist_title}
-                  image_id={image_id}
-                  is_public_domain={is_public_domain}
-                  variant={ArtworkVariant.small}
-                />
+        <WithLoader isLoading={isLoading}>
+          {error ? (
+            <div>{error}</div>
+          ) : (
+            artworks
+              .slice(3)
+              .map(
+                ({ title, artist_title, image_id, is_public_domain, id }) => {
+                  return (
+                    <ArtworkCard
+                      key={id}
+                      id={id}
+                      title={title}
+                      artist_title={artist_title}
+                      image_id={image_id}
+                      is_public_domain={is_public_domain}
+                      variant={ArtworkVariant.small}
+                    />
+                  )
+                }
               )
-            })}
+          )}
         </WithLoader>
       </div>
     </section>

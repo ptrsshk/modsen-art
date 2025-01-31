@@ -1,8 +1,8 @@
 import { observer } from 'mobx-react-lite'
 import { Dispatch } from 'react'
 
-import { ArrowIcon } from '../../Icons/ArrowIcon'
-import { useArtworksContext } from '../../store/artworksStore'
+import { ArrowIcon } from '../../../Icons/ArrowIcon'
+import { useArtworksContext } from '../../../store/artworksStore'
 
 interface ArrowButtonProps {
   direction: 'left' | 'right'

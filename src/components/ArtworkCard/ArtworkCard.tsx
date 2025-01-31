@@ -4,7 +4,7 @@ import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import { ArtworkVariant } from '../../constants/ArtworkVariant'
-import { IFavorite } from '../../types/types'
+import { checkIsFavourite } from '../../utils/FavouritesManager'
 import { BookmarkButton } from '../BookmarkButton'
 import { MuseumIcon } from '../Icons/MuseumIcon'
 
@@ -25,22 +25,11 @@ export const ArtworkCard: FC<ArtworkCardProps> = ({
   variant,
   id,
 }) => {
-  const checkIsBookmarked = () => {
-    const favourites: IFavorite[] = JSON.parse(
-      sessionStorage.getItem('favourites') || '[]'
-    )
-    return Boolean(
-      favourites.find((item) => {
-        return item.id === id
-      })
-    )
-  }
-  const [isBookmarked, setIsBookmarked] = useState(checkIsBookmarked)
+  const [isBookmarked, setIsBookmarked] = useState(checkIsFavourite(id))
   const navigate = useNavigate()
 
   useEffect(() => {}, [isBookmarked, id])
 
-  checkIsBookmarked()
   const cutString = (string: string) => {
     return string.length >= 25 ? string.slice(0, 22) + '...' : string
   }

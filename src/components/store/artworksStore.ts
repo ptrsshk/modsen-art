@@ -9,10 +9,12 @@ export default class ArtworksStore {
   private _artworks: IArtworkDetailed[]
   private _page: number
   private _isLoading: boolean
+  private _error: string
   constructor() {
     this._artworks = []
     this._page = 1
     this._isLoading = true
+    this._error = ''
     makeAutoObservable(this)
   }
 
@@ -38,7 +40,15 @@ export default class ArtworksStore {
     return this._isLoading
   }
 
+  setError(error: string) {
+    this._error = error
+  }
+  get error() {
+    return this._error
+  }
+
   fetchArtworks(page: number = 1) {
+    this.setError('')
     this.setIsLoading(true)
     fetchArtworksWithPagination(page)
       .then((res) => {
@@ -46,6 +56,7 @@ export default class ArtworksStore {
       })
       .catch((err) => {
         console.log(err)
+        this.setError('Error in fetching data')
       })
       .finally(() => {
         this.setIsLoading(false)
