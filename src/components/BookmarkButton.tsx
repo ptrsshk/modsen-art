@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { IFavorite } from '../types/types'
+import { setIsFavourite } from '../utils/FavouritesManager'
 
 interface BookmarkButtonProps {
   isBookmarked: boolean
@@ -14,20 +14,7 @@ export const BookmarkButton: FC<BookmarkButtonProps> = ({
   id,
 }) => {
   const handleClick = () => {
-    const favourites: IFavorite[] = JSON.parse(
-      sessionStorage.getItem('favourites') || '[]'
-    )
-
-    let newFavourites = []
-    if (isBookmarked) {
-      newFavourites = favourites.filter((item) => item.id !== id)
-    } else {
-      favourites.push({ id: id })
-      newFavourites = favourites
-    }
-    sessionStorage.setItem('favourites', JSON.stringify(newFavourites))
-    setIsBookmarked(!isBookmarked)
-    console.log(sessionStorage.getItem('favourites'))
+    setIsBookmarked(setIsFavourite(isBookmarked, id))
   }
 
   return (

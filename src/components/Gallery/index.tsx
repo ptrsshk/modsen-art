@@ -14,7 +14,7 @@ export const Gallery: FC = observer(() => {
   const [subPage, setSubPage] = useState(1)
   const subpages = [1, 2, 3, 4]
   const artworksStore = useArtworksContext()
-
+  const firstBigCardIndex = 3 * (subPage - 1)
   return (
     <section className="gallery-section">
       <div className="header-container">
@@ -26,7 +26,7 @@ export const Gallery: FC = observer(() => {
         <WithLoader isLoading={artworksStore.isLoading}>
           <div className="artworks-container">
             {artworksStore.artworks
-              .slice(3 * (subPage - 1), 3 + 3 * (subPage - 1))
+              .slice(firstBigCardIndex, firstBigCardIndex + 3)
               .map((artwork) => {
                 return (
                   <ArtworkCard

@@ -5,6 +5,7 @@ import { FC, useEffect, useState } from 'react'
 import { fetchFavouriteArtwork } from '../api'
 import { ArtworkCard } from '../components/ArtworkCard/ArtworkCard'
 import { BookmarkIcon } from '../components/Icons/BookmarkIcon'
+import { WithLoader } from '../components/WithLoader'
 import { ArtworkVariant } from '../constants/ArtworkVariant'
 import { IArtworkCard, IFavorite } from '../types/types'
 
@@ -46,12 +47,8 @@ export const FavouritesPage: FC = () => {
         <p className="highlight">Saved by you</p>
         <h3>Your favourites list</h3>
       </div>
-      {loading ? (
-        <div className="loader-container">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <>
+      {
+        <WithLoader isLoading={loading}>
           <div className="small-card-container">
             {artworks
               ? artworks.map((artwork) => {
@@ -65,8 +62,8 @@ export const FavouritesPage: FC = () => {
                 })
               : 'loading'}
           </div>
-        </>
-      )}
+        </WithLoader>
+      }
     </section>
   )
 }

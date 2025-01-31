@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 
-import { IArtworkDetailed, IFavorite } from '../../types/types'
+import { IArtworkDetailed } from '../../types/types'
+import { checkIsFavourite } from '../../utils/FavouritesManager'
 import { BookmarkButton } from '../BookmarkButton'
 import { MuseumIcon } from '../Icons/MuseumIcon'
 
@@ -16,17 +17,7 @@ export const ArtworkDetailed: FC<IArtworkDetailed> = ({
   image_id,
   credit_line,
 }) => {
-  const checkIsBookmarked = () => {
-    const favourites: IFavorite[] = JSON.parse(
-      sessionStorage.getItem('favourites') || '[]'
-    )
-    return Boolean(
-      favourites.find((item) => {
-        return item.id === id
-      })
-    )
-  }
-  const [isBookmarked, setIsBookmarked] = useState(checkIsBookmarked)
+  const [isBookmarked, setIsBookmarked] = useState(checkIsFavourite(id))
 
   return (
     <>
