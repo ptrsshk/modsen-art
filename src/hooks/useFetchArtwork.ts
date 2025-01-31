@@ -17,7 +17,7 @@ export const useFetchArtwork = (id: number) => {
         setArtwork(res.data)
       } catch (error) {
         console.error('Fetch error: ', error)
-        setError('Ошибка загрузки данных')
+        setError('Error in fetching data')
       } finally {
         setIsLoading(false)
       }

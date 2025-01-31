@@ -9,13 +9,17 @@ import { useFetchArtwork } from '../hooks/useFetchArtwork'
 
 export const ArtworkPage: FC = () => {
   const id = Number(useLocation().pathname.replace(/\/artwork\//, ''))
-  const { artwork, isLoading } = useFetchArtwork(id)
+  const { artwork, isLoading, error } = useFetchArtwork(id)
 
   console.log(artwork)
   return (
     <section className="artwork-section">
       <WithLoader isLoading={isLoading}>
-        {artwork ? <ArtworkDetailed {...artwork} /> : null}
+        {error ? (
+          <div>{error}</div>
+        ) : artwork ? (
+          <ArtworkDetailed {...artwork} />
+        ) : null}
       </WithLoader>
     </section>
   )
