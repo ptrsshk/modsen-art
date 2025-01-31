@@ -3,8 +3,8 @@ import { FC, useEffect } from 'react'
 
 import { Gallery } from '../components/Gallery'
 import { Other } from '../components/OtherSection'
-import { SearchSection } from '../components/SearchSection/SearchSection'
-import { useArtworksContext } from '../components/store/artworksStore'
+import { SearchSection } from '../components/SearchSection'
+import { useArtworksContext } from '../store/artworksStore'
 
 export const MainPage: FC = observer(() => {
   const artworksStore = useArtworksContext()

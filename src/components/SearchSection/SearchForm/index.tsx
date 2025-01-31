@@ -2,20 +2,25 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Dispatch, FC, SetStateAction, useEffect } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-import { search } from '../../api'
-import { useDebounce } from '../../hooks/useDebounce'
-import { IArtworkCard } from '../../types/types'
-import { SearchIcon } from '../Icons/SearchIcon'
-import { schema } from './schema'
+import { search } from '../../../api'
+import { useDebounce } from '../../../hooks/useDebounce'
+import { IArtworkCard } from '../../../types/types'
+import { SearchIcon } from '../../Icons/SearchIcon'
+import { schema } from '../schema'
 interface SearchData {
   q: string
 }
 interface SearchForm {
   setResults: Dispatch<SetStateAction<IArtworkCard[]>>
   setLoading: Dispatch<SetStateAction<boolean>>
+  setError: Dispatch<SetStateAction<string>>
 }
 
-export const SearchForm: FC<SearchForm> = ({ setResults, setLoading }) => {
+export const SearchForm: FC<SearchForm> = ({
+  setResults,
+  setLoading,
+  setError,
+}) => {
   const {
     register,
     watch,
@@ -31,12 +36,13 @@ export const SearchForm: FC<SearchForm> = ({ setResults, setLoading }) => {
   useEffect(() => {
     const submit: SubmitHandler<SearchData> = async (data) => {
       setLoading(true)
+      setError('')
       try {
         const result = await search(data.q)
-        console.log(result)
         setResults(result)
       } catch (error) {
-        alert(error)
+        console.log(error)
+        setError('Something went wrong while fetching data')
       } finally {
         setLoading(false)
       }
@@ -46,7 +52,7 @@ export const SearchForm: FC<SearchForm> = ({ setResults, setLoading }) => {
     } else {
       setResults([])
     }
-  }, [debouncedInputValue, errors.q, setLoading, setResults])
+  }, [debouncedInputValue, errors.q, setError, setLoading, setResults])
 
   return (
     <form onSubmit={handleSubmit(() => {})}>

@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
 
 import { ArtworkVariant } from '../../constants/ArtworkVariant'
+import { IMAGE_URL } from '../../constants/consts'
 import { checkIsFavourite } from '../../utils/FavouritesManager'
 import { BookmarkButton } from '../BookmarkButton'
 import { MuseumIcon } from '../Icons/MuseumIcon'
@@ -36,7 +37,6 @@ export const ArtworkCard: FC<ArtworkCardProps> = ({
   const handleCardClick = () => {
     navigate(`/artwork/${id}`)
   }
-
   return (
     <div
       className={variant === 'big' ? 'big artwork-card' : 'small artwork-card'}
@@ -45,8 +45,8 @@ export const ArtworkCard: FC<ArtworkCardProps> = ({
         <img
           src={
             variant === 'big'
-              ? `https://www.artic.edu/iiif/2/${image_id}/full/400,/0/default.jpg`
-              : `https://www.artic.edu/iiif/2/${image_id}/full/100,/0/default.jpg`
+              ? IMAGE_URL(image_id, 400)
+              : IMAGE_URL(image_id, 100)
           }
           alt="image"
           className="artwork-image"

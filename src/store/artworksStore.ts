@@ -1,9 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 import { useContext } from 'react'
 
-import { fetchArtworksWithPagination } from '../../api'
-import { ArtworkContext } from '../../main'
-import { IArtworkDetailed } from '../../types/types'
+import { fetchArtworksWithPagination } from '../api'
+import { ArtworkContext } from '../main'
+import { IArtworkDetailed } from '../types/types'
 
 export default class ArtworksStore {
   private _artworks: IArtworkDetailed[]

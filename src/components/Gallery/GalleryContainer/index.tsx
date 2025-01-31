@@ -2,8 +2,8 @@ import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
 
 import { ArtworkVariant } from '../../../constants/ArtworkVariant'
-import { ArtworkCard } from '../../ArtworkCard/ArtworkCard'
-import { useArtworksContext } from '../../store/artworksStore'
+import { useArtworksContext } from '../../../store/artworksStore'
+import { ArtworkCard } from '../../ArtworkCard'
 import { WithLoader } from '../../WithLoader'
 import { ArrowButton } from './ArrowButton'
 import { PaginationButton } from './PaginationButton'
@@ -15,7 +15,10 @@ export const GalleryContainer = observer(() => {
   const artworksStore = useArtworksContext()
   return (
     <>
-      <WithLoader isLoading={artworksStore.isLoading}>
+      <WithLoader
+        isLoading={artworksStore.isLoading}
+        error={artworksStore.error}
+      >
         <div className="artworks-container">
           {artworksStore.artworks
             .slice(firstBigCardIndex, firstBigCardIndex + 3)

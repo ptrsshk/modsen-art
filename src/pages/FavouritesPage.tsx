@@ -3,7 +3,7 @@ import './FavouritesPage.scss'
 import { FC, useEffect, useState } from 'react'
 
 import { fetchFavouriteArtwork } from '../api'
-import { ArtworkCard } from '../components/ArtworkCard/ArtworkCard'
+import { ArtworkCard } from '../components/ArtworkCard'
 import { BookmarkIcon } from '../components/Icons/BookmarkIcon'
 import { WithLoader } from '../components/WithLoader'
 import { ArtworkVariant } from '../constants/ArtworkVariant'
@@ -12,6 +12,7 @@ import { IArtworkCard, IFavorite } from '../types/types'
 export const FavouritesPage: FC = () => {
   const [artworks, setArtworks] = useState<IArtworkCard[]>([])
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
   useEffect(() => {
     const fetchData = async () => {
       const favourites: IFavorite[] = JSON.parse(
@@ -26,7 +27,8 @@ export const FavouritesPage: FC = () => {
         )
         setArtworks(artworksArr)
       } catch (error) {
-        console.error('Fetch error: ', error)
+        console.log(error)
+        setError('Error fetching data')
       } finally {
         setLoading(false)
       }
@@ -48,7 +50,7 @@ export const FavouritesPage: FC = () => {
         <h3>Your favourites list</h3>
       </div>
       {
-        <WithLoader isLoading={loading}>
+        <WithLoader isLoading={loading} error={error}>
           <div className="small-card-container">
             {artworks
               ? artworks.map((artwork) => {
@@ -60,7 +62,7 @@ export const FavouritesPage: FC = () => {
                     />
                   )
                 })
-              : 'loading'}
+              : null}
           </div>
         </WithLoader>
       }

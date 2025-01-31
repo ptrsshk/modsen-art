@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 
+import { IMAGE_URL } from '../../constants/consts'
 import { IArtworkDetailed } from '../../types/types'
 import { checkIsFavourite } from '../../utils/FavouritesManager'
 import { BookmarkButton } from '../BookmarkButton'
@@ -24,7 +25,7 @@ export const ArtworkDetailed: FC<IArtworkDetailed> = ({
       <div className="image-container">
         {image_id ? (
           <img
-            src={`https://www.artic.edu/iiif/2/${image_id}/full/400,/0/default.jpg`}
+            src={IMAGE_URL(image_id, 400)}
             alt="image"
             className="artwork-image"
           />

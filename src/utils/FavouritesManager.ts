@@ -23,7 +23,5 @@ export const setIsFavourite = (isBookmarked: boolean, id: number) => {
     newFavourites = favourites
   }
   sessionStorage.setItem('favourites', JSON.stringify(newFavourites))
-
-  console.log(sessionStorage.getItem('favourites'))
   return !isBookmarked
 }
