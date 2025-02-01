@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { Dispatch, FC, SetStateAction } from 'react'
-
-import { useArtworksContext } from '../../../../store/artworksStore'
+import { useArtworksContext } from 'src/store/artworksStore'
 
 interface PaginationButtonProps {
   id: number

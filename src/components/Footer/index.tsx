@@ -3,8 +3,8 @@ import './Footer.scss'
 import { FC } from 'react'
 import { Link } from 'react-router'
 
-import { ModsenIcon } from '../Icons/ModsenIcon'
-import { MuseumWithTextIcon } from '../Icons/MuseumWithTextIcon'
+import { ModsenIcon } from '../../assets/Icons/ModsenIcon'
+import { MuseumWithTextIcon } from '../../assets/Icons/MuseumWithTextIcon'
 
 export const Footer: FC = () => {
   return (

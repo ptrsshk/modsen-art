@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-
-import { fetchArtwork } from '../api'
-import { IArtworkDetailed } from '../types/types'
+import { fetchArtwork } from 'src/api'
+import { IArtworkDetailed } from 'src/types/types'
 
 export const useFetchArtwork = (id: number) => {
   const [isLoading, setIsLoading] = useState(false)

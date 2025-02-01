@@ -1,13 +1,12 @@
 import './FavouritesPage.scss'
 
 import { FC, useEffect, useState } from 'react'
-
-import { fetchFavouriteArtwork } from '../api'
-import { ArtworkCard } from '../components/ArtworkCard'
-import { BookmarkIcon } from '../components/Icons/BookmarkIcon'
-import { WithLoader } from '../components/WithLoader'
-import { ArtworkVariant } from '../constants/ArtworkVariant'
-import { IArtworkCard, IFavorite } from '../types/types'
+import { fetchFavouriteArtwork } from 'src/api'
+import { BookmarkIcon } from 'src/assets/Icons/BookmarkIcon'
+import { ArtworkCard } from 'src/components/ArtworkCard'
+import { WithLoader } from 'src/components/WithLoader'
+import { ArtworkVariant } from 'src/constants/ArtworkVariant'
+import { IArtworkCard, IFavorite } from 'src/types/types'
 
 export const FavouritesPage: FC = () => {
   const [artworks, setArtworks] = useState<IArtworkCard[]>([])

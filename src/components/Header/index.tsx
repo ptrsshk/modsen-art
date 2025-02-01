@@ -3,11 +3,11 @@ import './Header.scss'
 import { FC } from 'react'
 import { useLocation } from 'react-router'
 import { Link } from 'react-router'
+import { FAVOURITES_ROUTE } from 'src/constants/consts'
 
-import { FAVOURITES_ROUTE } from '../../constants/consts'
-import { BookmarkIcon } from '../Icons/BookmarkIcon'
-import { HomeIcon } from '../Icons/HomeIcon'
-import { MuseumWithTextIcon } from '../Icons/MuseumWithTextIcon'
+import { BookmarkIcon } from '../../assets/Icons/BookmarkIcon'
+import { HomeIcon } from '../../assets/Icons/HomeIcon'
+import { MuseumWithTextIcon } from '../../assets/Icons/MuseumWithTextIcon'
 
 export const Header: FC = () => {
   const location = useLocation()

@@ -1,6 +1,5 @@
 import { FC } from 'react'
-
-import { setIsFavourite } from '../utils/FavouritesManager'
+import { setIsFavourite } from 'src/utils/FavouritesManager'
 
 interface BookmarkButtonProps {
   isBookmarked: boolean

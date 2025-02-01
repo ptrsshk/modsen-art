@@ -2,12 +2,12 @@ import './ArtworkCard.scss'
 
 import { FC, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router'
+import { ArtworkVariant } from 'src/constants/ArtworkVariant'
+import { IMAGE_URL } from 'src/constants/consts'
+import { checkIsFavourite } from 'src/utils/FavouritesManager'
 
-import { ArtworkVariant } from '../../constants/ArtworkVariant'
-import { IMAGE_URL } from '../../constants/consts'
-import { checkIsFavourite } from '../../utils/FavouritesManager'
+import { MuseumIcon } from '../../assets/Icons/MuseumIcon'
 import { BookmarkButton } from '../BookmarkButton'
-import { MuseumIcon } from '../Icons/MuseumIcon'
 
 interface ArtworkCardProps {
   title: string | null

@@ -1,6 +1,5 @@
 import { FC } from 'react'
-
-import { sortOptions } from '../../../../constants/consts'
+import { sortOptions } from 'src/constants/consts'
 
 interface SortSelectorProps {
   sortVariant: string

@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
+import { ArtworkCard } from 'src/components/ArtworkCard'
+import { WithLoader } from 'src/components/WithLoader'
+import { ArtworkVariant } from 'src/constants/ArtworkVariant'
+import { useArtworksContext } from 'src/store/artworksStore'
 
-import { ArtworkVariant } from '../../../constants/ArtworkVariant'
-import { useArtworksContext } from '../../../store/artworksStore'
-import { ArtworkCard } from '../../ArtworkCard'
-import { WithLoader } from '../../WithLoader'
 import { ArrowButton } from './ArrowButton'
 import { PaginationButton } from './PaginationButton'
 

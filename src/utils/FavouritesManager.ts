@@ -1,4 +1,4 @@
-import { IFavorite } from '../types/types'
+import { IFavorite } from 'src/types/types'
 
 export const checkIsFavourite = (id: number) => {
   const favourites: IFavorite[] = JSON.parse(

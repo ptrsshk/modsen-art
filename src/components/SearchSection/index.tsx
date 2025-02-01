@@ -1,11 +1,11 @@
 import './SearchSection.scss'
 
 import { FC, useState } from 'react'
+import { IArtworkCard } from 'src/types/types'
 
-import { IArtworkCard } from '../../types/types'
 import { WithLoader } from '../WithLoader'
-import { SearchForm } from './SearchForm/'
-import { SearchResults } from './SearchResults/'
+import { SearchForm } from './SearchForm'
+import { SearchResults } from './SearchResults'
 
 export const SearchSection: FC = () => {
   const [results, setResults] = useState<IArtworkCard[]>([])

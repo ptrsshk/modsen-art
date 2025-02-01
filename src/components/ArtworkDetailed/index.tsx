@@ -1,10 +1,10 @@
 import { FC, useState } from 'react'
+import { IMAGE_URL } from 'src/constants/consts'
+import { IArtworkDetailed } from 'src/types/types'
+import { checkIsFavourite } from 'src/utils/FavouritesManager'
 
-import { IMAGE_URL } from '../../constants/consts'
-import { IArtworkDetailed } from '../../types/types'
-import { checkIsFavourite } from '../../utils/FavouritesManager'
+import { MuseumIcon } from '../../assets/Icons/MuseumIcon'
 import { BookmarkButton } from '../BookmarkButton'
-import { MuseumIcon } from '../Icons/MuseumIcon'
 
 export const ArtworkDetailed: FC<IArtworkDetailed> = ({
   id,

@@ -2,9 +2,9 @@ import './Other.scss'
 
 import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
+import { ArtworkVariant } from 'src/constants/ArtworkVariant'
+import { useArtworksContext } from 'src/store/artworksStore'
 
-import { ArtworkVariant } from '../../constants/ArtworkVariant'
-import { useArtworksContext } from '../../store/artworksStore'
 import { ArtworkCard } from '../ArtworkCard'
 import { WithLoader } from '../WithLoader'
 

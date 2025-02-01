@@ -2,10 +2,9 @@ import './ArtworkPage.scss'
 
 import { FC } from 'react'
 import { useLocation } from 'react-router'
-
-import { ArtworkDetailed } from '../components/ArtworkDetailed'
-import { WithLoader } from '../components/WithLoader'
-import { useFetchArtwork } from '../hooks/useFetchArtwork'
+import { ArtworkDetailed } from 'src/components/ArtworkDetailed'
+import { WithLoader } from 'src/components/WithLoader'
+import { useFetchArtwork } from 'src/hooks/useFetchArtwork'
 
 export const ArtworkPage: FC = () => {
   const id = Number(useLocation().pathname.replace(/\/artwork\//, ''))
