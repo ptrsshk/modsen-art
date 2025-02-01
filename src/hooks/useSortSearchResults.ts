@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { IArtworkCard } from 'src/types/types'
+import { IArtworkCard } from 'src/types'
 
 export const useSortedResults = (
   results: IArtworkCard[],

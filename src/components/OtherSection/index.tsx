@@ -5,12 +5,11 @@ import { FC } from 'react'
 import { ArtworkVariant } from 'src/constants/ArtworkVariant'
 import { useArtworksContext } from 'src/store/artworksStore'
 
-import { ArtworkCard } from '../ArtworkCard'
+import { ArtworkCardList } from '../ArtworkCardList'
 import { WithLoader } from '../WithLoader'
 
 export const Other: FC = observer(() => {
   const { artworks, error, isLoading } = useArtworksContext()
-
   return (
     <section className="other-section">
       <div className="header-container">
@@ -19,21 +18,10 @@ export const Other: FC = observer(() => {
       </div>
       <div className="small-card-container">
         <WithLoader isLoading={isLoading} error={error}>
-          {artworks
-            .slice(3)
-            .map(({ title, artist_title, image_id, is_public_domain, id }) => {
-              return (
-                <ArtworkCard
-                  key={id}
-                  id={id}
-                  title={title}
-                  artist_title={artist_title}
-                  image_id={image_id}
-                  is_public_domain={is_public_domain}
-                  variant={ArtworkVariant.small}
-                />
-              )
-            })}
+          <ArtworkCardList
+            artworks={artworks.slice(3)}
+            variant={ArtworkVariant.small}
+          />
         </WithLoader>
       </div>
     </section>

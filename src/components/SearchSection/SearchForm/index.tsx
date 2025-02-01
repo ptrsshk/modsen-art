@@ -4,7 +4,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { search } from 'src/api'
 import { SearchIcon } from 'src/assets/Icons/SearchIcon'
 import { useDebounce } from 'src/hooks/useDebounce'
-import { IArtworkCard } from 'src/types/types'
+import { IArtworkCard } from 'src/types'
 
 import { schema } from '../schema'
 

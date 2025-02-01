@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import { useState } from 'react'
-import { ArtworkCard } from 'src/components/ArtworkCard'
+import { ArtworkCardList } from 'src/components/ArtworkCardList'
 import { WithLoader } from 'src/components/WithLoader'
 import { ArtworkVariant } from 'src/constants/ArtworkVariant'
 import { useArtworksContext } from 'src/store/artworksStore'
@@ -12,29 +12,19 @@ export const GalleryContainer = observer(() => {
   const [subPage, setSubPage] = useState(1)
   const subpages = [1, 2, 3, 4]
   const firstBigCardIndex = 3 * (subPage - 1)
-  const artworksStore = useArtworksContext()
+  const { error, isLoading, artworks, page } = useArtworksContext()
   return (
     <>
-      <WithLoader
-        isLoading={artworksStore.isLoading}
-        error={artworksStore.error}
-      >
+      <WithLoader isLoading={isLoading} error={error}>
         <div className="artworks-container">
-          {artworksStore.artworks
-            .slice(firstBigCardIndex, firstBigCardIndex + 3)
-            .map((artwork) => {
-              return (
-                <ArtworkCard
-                  key={artwork.id}
-                  {...artwork}
-                  variant={ArtworkVariant.big}
-                />
-              )
-            })}
+          <ArtworkCardList
+            artworks={artworks.slice(firstBigCardIndex, firstBigCardIndex + 3)}
+            variant={ArtworkVariant.big}
+          />
         </div>
       </WithLoader>
       <div className="gallery-pagination">
-        {artworksStore.page !== 1 ? (
+        {page !== 1 ? (
           <ArrowButton direction="left" setSubPage={setSubPage} />
         ) : null}
         {subpages.map((id) => (
@@ -45,7 +35,7 @@ export const GalleryContainer = observer(() => {
             id={id}
           />
         ))}
-        {artworksStore.page < 10000 ? (
+        {page < 10000 ? (
           <ArrowButton direction="right" setSubPage={setSubPage} />
         ) : null}
       </div>

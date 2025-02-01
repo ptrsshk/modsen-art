@@ -2,10 +2,10 @@ import { makeAutoObservable } from 'mobx'
 import { useContext } from 'react'
 import { fetchArtworksWithPagination } from 'src/api'
 import { ArtworkContext } from 'src/main'
-import { IArtworkDetailed } from 'src/types/types'
+import { IArtworkCard } from 'src/types'
 
 export default class ArtworksStore {
-  private _artworks: IArtworkDetailed[]
+  private _artworks: IArtworkCard[]
   private _page: number
   private _isLoading: boolean
   private _error: string
@@ -17,7 +17,7 @@ export default class ArtworksStore {
     makeAutoObservable(this)
   }
 
-  setArtworks(artworks: IArtworkDetailed[]) {
+  setArtworks(artworks: IArtworkCard[]) {
     this._artworks = artworks
   }
   get artworks() {

@@ -1,4 +1,4 @@
-import { IFavorite } from 'src/types/types'
+import { IFavorite } from 'src/types'
 
 export const checkIsFavourite = (id: number) => {
   const favourites: IFavorite[] = JSON.parse(
@@ -24,4 +24,8 @@ export const setIsFavourite = (isBookmarked: boolean, id: number) => {
   }
   sessionStorage.setItem('favourites', JSON.stringify(newFavourites))
   return !isBookmarked
+}
+
+export const getFavourites = (): IFavorite[] => {
+  return JSON.parse(sessionStorage.getItem('favourites') || '[]')
 }

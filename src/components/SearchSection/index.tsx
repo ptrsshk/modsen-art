@@ -1,7 +1,7 @@
 import './SearchSection.scss'
 
 import { FC, useState } from 'react'
-import { IArtworkCard } from 'src/types/types'
+import { IArtworkCard } from 'src/types'
 
 import { WithLoader } from '../WithLoader'
 import { SearchForm } from './SearchForm'

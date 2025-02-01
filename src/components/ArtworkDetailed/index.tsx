@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { IMAGE_URL } from 'src/constants/consts'
-import { IArtworkDetailed } from 'src/types/types'
+import { IArtworkDetailed } from 'src/types'
 import { checkIsFavourite } from 'src/utils/FavouritesManager'
 
 import { MuseumIcon } from '../../assets/Icons/MuseumIcon'

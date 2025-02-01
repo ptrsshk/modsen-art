@@ -1,70 +1,8 @@
 import './FavouritesPage.scss'
 
-import { FC, useEffect, useState } from 'react'
-import { fetchFavouriteArtwork } from 'src/api'
-import { BookmarkIcon } from 'src/assets/Icons/BookmarkIcon'
-import { ArtworkCard } from 'src/components/ArtworkCard'
-import { WithLoader } from 'src/components/WithLoader'
-import { ArtworkVariant } from 'src/constants/ArtworkVariant'
-import { IArtworkCard, IFavorite } from 'src/types/types'
+import { FC } from 'react'
+import { FavouritesSection } from 'src/components/FavouritesSection'
 
 export const FavouritesPage: FC = () => {
-  const [artworks, setArtworks] = useState<IArtworkCard[]>([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  useEffect(() => {
-    const fetchData = async () => {
-      const favourites: IFavorite[] = JSON.parse(
-        sessionStorage.getItem('favourites') || '[]'
-      )
-      setLoading(true)
-      try {
-        const artworksArr = await Promise.all(
-          favourites.map((favourite) =>
-            fetchFavouriteArtwork(favourite.id).then((res) => res.data)
-          )
-        )
-        setArtworks(artworksArr)
-      } catch (error) {
-        console.log(error)
-        setError('Error fetching data')
-      } finally {
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
-  return (
-    <section className="favourites-section">
-      <h1>
-        Here are your
-        <br />
-        <span className="highlight">
-          <BookmarkIcon />
-          Favourites
-        </span>
-      </h1>
-      <div className="header-container">
-        <p className="highlight">Saved by you</p>
-        <h3>Your favourites list</h3>
-      </div>
-      {
-        <WithLoader isLoading={loading} error={error}>
-          <div className="small-card-container">
-            {artworks
-              ? artworks.map((artwork) => {
-                  return (
-                    <ArtworkCard
-                      key={artwork.id}
-                      {...artwork}
-                      variant={ArtworkVariant.small}
-                    />
-                  )
-                })
-              : null}
-          </div>
-        </WithLoader>
-      }
-    </section>
-  )
+  return <FavouritesSection />
 }

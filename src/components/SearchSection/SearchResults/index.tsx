@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 import { ArtworkCard } from 'src/components/ArtworkCard'
 import { ArtworkVariant } from 'src/constants/ArtworkVariant'
 import { useSortedResults } from 'src/hooks/useSortSearchResults'
-import { IArtworkCard } from 'src/types/types'
+import { IArtworkCard } from 'src/types'
 
 import { SortSelector } from './SortSelector'
 
