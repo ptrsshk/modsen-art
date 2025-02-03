@@ -1,4 +1,4 @@
-import { FC, useState } from 'react'
+import { FC, useCallback, useState } from 'react'
 import { IMAGE_URL } from 'src/constants/consts'
 import { IArtworkDetailed } from 'src/types'
 import { checkIsFavourite } from 'src/utils/FavouritesManager'
@@ -24,7 +24,13 @@ export const ArtworkDetailed: FC<ArtworkDetailedProps> = ({ artwork }) => {
     credit_line,
   } = artwork
   const [isBookmarked, setIsBookmarked] = useState(checkIsFavourite(id))
-
+  const getArtistNacionality = useCallback((artist_display: string | null) => {
+    return artist_display
+      ? artist_display.split(' ').length > 1
+        ? artist_display.split('\n')[1]?.split(',')[0].trim()
+        : artist_display
+      : null
+  }, [])
   return (
     <>
       <div className="image-container">
@@ -57,11 +63,7 @@ export const ArtworkDetailed: FC<ArtworkDetailedProps> = ({ artwork }) => {
           <h3>Overview</h3>
           <p>
             <span className="highlight">Artist nacionality: </span>
-            {artist_display
-              ? artist_display.split(' ').length > 1
-                ? artist_display.split('\n')[1]?.split(',')[0].trim()
-                : artist_display
-              : null}
+            {getArtistNacionality(artist_display)}
           </p>
           <p>
             <span className="highlight">Dimensions: </span>
