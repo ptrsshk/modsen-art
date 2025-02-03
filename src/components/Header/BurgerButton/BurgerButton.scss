@@ -1,0 +1,38 @@
+@import '../../../theme.scss';
+.burger-button {
+  display: none;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  @media (max-width: 768px) {
+    display: block;
+  }
+  &::after,
+  &::before {
+    position: absolute;
+    display: block;
+    content: '';
+    height: 2px;
+    width: 30px;
+    border-radius: 20px;
+    background-color: $white;
+    transition: 0.3s ease-in-out;
+  }
+  &::before {
+    top: 8px;
+  }
+  &::after {
+    bottom: 8px;
+  }
+  &.active {
+    &::before {
+      transform: rotate(45deg);
+      top: 13px;
+    }
+    &::after {
+      transform: rotate(-45deg);
+      bottom: 14px;
+    }
+  }
+}

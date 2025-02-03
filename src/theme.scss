@@ -1,0 +1,32 @@
+$header-height: 126px;
+
+$white: #ffffff;
+$orange: #e0a449;
+$bg: #fafafa;
+$fav-btn-bg: #f9f9f9;
+$fav-btn-border: #f0f1f1;
+$text: #393939;
+$input-bg: #3939390d;
+$header-gradient: linear-gradient(
+  90deg,
+  rgba(52, 51, 51, 1) 0%,
+  rgba(72, 72, 72, 1) 70%,
+  rgba(40, 40, 40, 1) 100%
+);
+$header-bg: #333333;
+$transparent: #00000000;
+$error: #ab1717;
+
+$text-family-inter: 'Inter';
+$text-family-lexend: 'Lexend Deca';
+
+$text-size-small: 16px;
+$text-size-medium: 18px;
+$text-size-sub-header: 32px;
+$text-size-header: 64px;
+
+$text-weight-thin: 300;
+$text-weight-normal: 400;
+$text-weight-semi-bold: 500;
+$text-weight-pagination-active: 600;
+$text-weight-bold: 700;

@@ -1,3 +1,5 @@
+import './BookMarkButton.scss'
+
 import { FC } from 'react'
 import { setIsFavourite } from 'src/utils/FavouritesManager'
 

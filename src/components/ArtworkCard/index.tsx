@@ -3,7 +3,7 @@ import './ArtworkCard.scss'
 import { FC, useCallback, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { ArtworkVariant } from 'src/constants/ArtworkVariant'
-import { IMAGE_URL } from 'src/constants/consts'
+import { IMAGE_URL, IS_PUBLIC_DOMAIN } from 'src/constants/consts'
 import { IArtworkCard } from 'src/types'
 import { checkIsFavourite } from 'src/utils/FavouritesManager'
 
@@ -53,7 +53,7 @@ export const ArtworkCard: FC<ArtworkCardProps> = ({ artwork, variant }) => {
           <p className="highlight">
             {artist_title ? cutString(artist_title) : 'No information'}
           </p>
-          <p className="domain">{is_public_domain ? 'Public' : 'Private'}</p>
+          <p className="domain">{IS_PUBLIC_DOMAIN(is_public_domain)}</p>
         </div>
         <BookmarkButton
           isBookmarked={isBookmarked}
