@@ -12,7 +12,7 @@ export const ArtworkPage: FC = () => {
   return (
     <section className="artwork-section">
       <WithLoader isLoading={isLoading} error={error}>
-        {artwork ? <ArtworkDetailed {...artwork} /> : null}
+        {artwork ? <ArtworkDetailed artwork={artwork} /> : null}
       </WithLoader>
     </section>
   )

@@ -6,18 +6,23 @@ import { checkIsFavourite } from 'src/utils/FavouritesManager'
 import { MuseumIcon } from '../../assets/Icons/MuseumIcon'
 import { BookmarkButton } from '../BookmarkButton'
 
-export const ArtworkDetailed: FC<IArtworkDetailed> = ({
-  id,
-  title,
-  artist_display,
-  artist_title,
-  copyright_notice,
-  date_display,
-  department_title,
-  dimensions,
-  image_id,
-  credit_line,
-}) => {
+interface ArtworkDetailedProps {
+  artwork: IArtworkDetailed
+}
+
+export const ArtworkDetailed: FC<ArtworkDetailedProps> = ({ artwork }) => {
+  const {
+    id,
+    title,
+    artist_display,
+    artist_title,
+    copyright_notice,
+    date_display,
+    department_title,
+    dimensions,
+    image_id,
+    credit_line,
+  } = artwork
   const [isBookmarked, setIsBookmarked] = useState(checkIsFavourite(id))
 
   return (
