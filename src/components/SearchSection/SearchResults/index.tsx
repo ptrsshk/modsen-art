@@ -22,7 +22,7 @@ export const SearchResults: FC<SearchResults> = ({ results }) => {
         {sortedResults.map((artwork) => (
           <ArtworkCard
             key={artwork.id}
-            {...artwork}
+            artwork={artwork}
             variant={ArtworkVariant.small}
           />
         ))}
