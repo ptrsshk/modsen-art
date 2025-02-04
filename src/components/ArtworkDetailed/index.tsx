@@ -1,3 +1,5 @@
+import './ArtworkDetailed.scss'
+
 import { FC, useCallback, useState } from 'react'
 import { IMAGE_URL } from 'src/constants/consts'
 import { IArtworkDetailed } from 'src/types'
@@ -5,7 +7,6 @@ import { checkIsFavourite } from 'src/utils/FavouritesManager'
 
 import { MuseumIcon } from '../../assets/Icons/MuseumIcon'
 import { BookmarkButton } from '../BookmarkButton'
-
 interface ArtworkDetailedProps {
   artwork: IArtworkDetailed
 }

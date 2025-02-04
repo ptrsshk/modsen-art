@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useLocation } from 'react-router'
-import { FAVOURITES_ROUTE } from 'src/constants/consts'
+import { HOME_ROUTE } from 'src/constants/consts'
 import { NavLinkVariant } from 'src/constants/NavLinkVariant'
 
 import { NavLink } from './NavLink'
@@ -19,7 +19,7 @@ export const NavLinksList: FC<LinksListProps> = ({
     <div
       className={isMenuOpen ? 'links-container menu-opened' : 'links-container'}
     >
-      {location.pathname === FAVOURITES_ROUTE ? (
+      {location.pathname !== HOME_ROUTE ? (
         <NavLink type={NavLinkVariant.home} setIsMenuOpen={setIsMenuOpen} />
       ) : null}
       <NavLink type={NavLinkVariant.favourites} setIsMenuOpen={setIsMenuOpen} />
