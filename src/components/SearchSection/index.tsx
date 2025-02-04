@@ -1,6 +1,7 @@
 import './SearchSection.scss'
 
 import { FC, useState } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { IArtworkCard } from 'src/types'
 
 import { WithLoader } from '../WithLoader'
@@ -11,10 +12,9 @@ export const SearchSection: FC = () => {
   const [results, setResults] = useState<IArtworkCard[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const showResults = (results: IArtworkCard[] | null, loading: boolean) => {
+  const showResults = (results: IArtworkCard[] | null) => {
     if (results === null) return null
-    if (results.length) return <SearchResults results={results} />
-    if (!loading) return <div>Nothing found.</div>
+    return <SearchResults results={results} />
   }
   return (
     <section className="search-section">
@@ -27,7 +27,11 @@ export const SearchSection: FC = () => {
         setError={setError}
       />
       <WithLoader isLoading={loading} error={error}>
-        {showResults(results, loading)}
+        <ErrorBoundary
+          fallbackRender={({ error }) => <div>{error.message}</div>}
+        >
+          {showResults(results)}
+        </ErrorBoundary>
       </WithLoader>
     </section>
   )

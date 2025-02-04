@@ -12,7 +12,9 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <ErrorBoundary fallback={<div>Something went wrong...</div>}>
+      <ErrorBoundary
+        fallback={<main>Something went wrong... Try reloading page.</main>}
+      >
         <AppRouter />
       </ErrorBoundary>
       <Footer />

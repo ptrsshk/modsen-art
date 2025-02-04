@@ -12,7 +12,7 @@ interface SearchResults {
 
 export const SearchResults: FC<SearchResults> = ({ results }) => {
   const [sortVariant, setSortVariant] = useState('default')
-
+  if (!results.length) throw new Error('Nothing found.')
   const sortedResults = useSortedResults(results, sortVariant)
 
   return (
