@@ -12,7 +12,7 @@ interface SearchData {
   q: string
 }
 interface SearchForm {
-  setResults: Dispatch<SetStateAction<IArtworkCard[]>>
+  setResults: Dispatch<SetStateAction<IArtworkCard[] | null>>
   setLoading: Dispatch<SetStateAction<boolean>>
   setError: Dispatch<SetStateAction<string>>
 }
@@ -51,7 +51,7 @@ export const SearchForm: FC<SearchForm> = ({
     if (debouncedInputValue && !errors.q) {
       submit({ q: debouncedInputValue })
     } else {
-      setResults([])
+      setResults(null)
     }
   }, [debouncedInputValue, errors.q, setError, setLoading, setResults])
 
