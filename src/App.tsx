@@ -1,6 +1,7 @@
 import './reset.css'
 import './style.scss'
 
+import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter } from 'react-router'
 
 import { AppRouter } from './components/AppRouter'
@@ -11,7 +12,9 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <AppRouter />
+      <ErrorBoundary fallback={<div>Something went wrong...</div>}>
+        <AppRouter />
+      </ErrorBoundary>
       <Footer />
     </BrowserRouter>
   )
