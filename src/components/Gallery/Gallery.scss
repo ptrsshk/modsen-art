@@ -1,3 +1,4 @@
+@import '../../theme.scss';
 .gallery-section {
   display: flex;
   flex-direction: column;
@@ -17,18 +18,18 @@
       justify-content: flex-end;
       gap: 8px;
       .pagination-btn {
-        font-size: 18px;
-        font-weight: 300;
+        font-size: $text-size-medium;
+        font-weight: $text-weight-thin;
         padding: 3px 10px;
         border-radius: 4px;
         transition: 0.3s ease;
         &:hover {
-          background-color: #f1780040;
+          background-color: $fav-btn-bg;
         }
         &.active {
-          background-color: #f17900;
-          color: white;
-          font-weight: 600;
+          background-color: $orange;
+          color: $white;
+          font-weight: $text-weight-pagination-active;
         }
         &.arrow {
           padding: 3px;
@@ -39,18 +40,18 @@
       }
     }
     .loader-container {
-      height: 534px;
+      height: 537px;
     }
   }
 }
 .header-container {
   text-align: center;
-  font-weight: 400;
+  font-weight: $text-weight-normal;
   p {
-    font-size: 16px;
+    font-size: $text-size-medium;
   }
   h3 {
-    font-size: 32px;
+    font-size: $text-size-sub-header;
   }
 }
 .loader-container {
@@ -59,16 +60,4 @@
   align-items: center;
   justify-content: center;
 }
-.loader {
-  width: 70px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 8px solid;
-  border-color: #f17900 #0000;
-  animation: l1 1s infinite;
-}
-@keyframes l1 {
-  to {
-    transform: rotate(0.5turn);
-  }
-}
+
