@@ -29,6 +29,7 @@ export const SearchSection: FC = () => {
       <WithLoader isLoading={loading} error={error}>
         <ErrorBoundary
           fallbackRender={({ error }) => <div>{error.message}</div>}
+          resetKeys={[results]}
         >
           {showResults(results)}
         </ErrorBoundary>
