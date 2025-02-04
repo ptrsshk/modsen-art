@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { useLocation } from 'react-router'
-import { ArtworkDetailed } from 'src/components/ArtworkDetailed'
+import { ArtworkDetailed } from 'src/components/ArtworkDetailedSection/ArtworkDetailed'
 import { useFetchArtwork } from 'src/hooks/useFetchArtwork'
 
 import { WithLoader } from '../WithLoader'

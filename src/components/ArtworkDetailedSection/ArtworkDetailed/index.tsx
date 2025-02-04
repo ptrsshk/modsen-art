@@ -5,8 +5,8 @@ import { IMAGE_URL } from 'src/constants/consts'
 import { IArtworkDetailed } from 'src/types'
 import { checkIsFavourite } from 'src/utils/FavouritesManager'
 
-import { MuseumIcon } from '../../assets/Icons/MuseumIcon'
-import { BookmarkButton } from '../BookmarkButton'
+import { MuseumIcon } from '../../../assets/Icons/MuseumIcon'
+import { BookmarkButton } from '../../BookmarkButton'
 interface ArtworkDetailedProps {
   artwork: IArtworkDetailed
 }
@@ -25,6 +25,9 @@ export const ArtworkDetailed: FC<ArtworkDetailedProps> = ({ artwork }) => {
     credit_line,
   } = artwork
   const [isBookmarked, setIsBookmarked] = useState(checkIsFavourite(id))
+  const setIsBoockmarkedCallback = useCallback((isBookmarked: boolean) => {
+    setIsBookmarked(isBookmarked)
+  }, [])
   const getArtistNacionality = useCallback((artist_display: string | null) => {
     return artist_display
       ? artist_display.split(' ').length > 1
@@ -47,7 +50,7 @@ export const ArtworkDetailed: FC<ArtworkDetailedProps> = ({ artwork }) => {
           </div>
         )}
         <BookmarkButton
-          setIsBookmarked={setIsBookmarked}
+          setIsBookmarked={setIsBoockmarkedCallback}
           isBookmarked={isBookmarked}
           id={id}
         />

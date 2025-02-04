@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { ArtworkCardList } from 'src/components/ArtworkCardList'
 import { WithLoader } from 'src/components/WithLoader'
 import { ArtworkVariant } from 'src/constants/ArtworkVariant'
@@ -10,6 +10,9 @@ import { PaginationButton } from './PaginationButton'
 
 export const GalleryContainer = observer(() => {
   const [subPage, setSubPage] = useState(1)
+  const setSubPageCallback = useCallback((subPage: number) => {
+    setSubPage(subPage)
+  }, [])
   const subpages = [1, 2, 3, 4]
   const firstBigCardIndex = 3 * (subPage - 1)
   const { error, isLoading, artworks, page } = useArtworksContext()
@@ -25,7 +28,7 @@ export const GalleryContainer = observer(() => {
       </WithLoader>
       <div className="gallery-pagination">
         {page !== 1 ? (
-          <ArrowButton direction="left" setSubPage={setSubPage} />
+          <ArrowButton direction="left" setSubPage={setSubPageCallback} />
         ) : null}
         {subpages.map((id) => (
           <PaginationButton
@@ -36,7 +39,7 @@ export const GalleryContainer = observer(() => {
           />
         ))}
         {page < 10000 ? (
-          <ArrowButton direction="right" setSubPage={setSubPage} />
+          <ArrowButton direction="right" setSubPage={setSubPageCallback} />
         ) : null}
       </div>
     </>

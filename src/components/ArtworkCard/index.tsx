@@ -18,6 +18,9 @@ interface ArtworkCardProps {
 export const ArtworkCard: FC<ArtworkCardProps> = ({ artwork, variant }) => {
   const { id, artist_title, image_id, title, is_public_domain } = artwork
   const [isBookmarked, setIsBookmarked] = useState(checkIsFavourite(id))
+  const setIsBoockmarkedCallback = useCallback((isBookmarked: boolean) => {
+    setIsBookmarked(isBookmarked)
+  }, [])
   const navigate = useNavigate()
 
   const cutString = (string: string) => {
@@ -57,7 +60,7 @@ export const ArtworkCard: FC<ArtworkCardProps> = ({ artwork, variant }) => {
         </div>
         <BookmarkButton
           isBookmarked={isBookmarked}
-          setIsBookmarked={setIsBookmarked}
+          setIsBookmarked={setIsBoockmarkedCallback}
           id={id}
         />
       </div>
