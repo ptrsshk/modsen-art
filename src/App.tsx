@@ -1,15 +1,22 @@
-import { BrowserRouter } from 'react-router'
-import { AppRouter } from './components/AppRouter'
-import { Header } from './components/Header/Header'
 import './reset.css'
 import './style.scss'
-import { Footer } from './components/Footer/Footer'
+
+import { ErrorBoundary } from 'react-error-boundary'
+import { BrowserRouter } from 'react-router'
+
+import { AppRouter } from './components/AppRouter'
+import { Footer } from './components/Footer'
+import { Header } from './components/Header'
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <AppRouter />
+      <ErrorBoundary
+        fallback={<main>Something went wrong... Try reloading page.</main>}
+      >
+        <AppRouter />
+      </ErrorBoundary>
       <Footer />
     </BrowserRouter>
   )

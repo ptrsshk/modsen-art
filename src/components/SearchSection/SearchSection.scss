@@ -1,13 +1,14 @@
+@import '../../theme.scss';
 .search-section {
   display: flex;
   flex-direction: column;
   align-items: center;
   h1 {
     text-transform: capitalize;
-    font-size: 64px;
+    font-size: $text-size-header;
     max-width: 684px;
     text-align: center;
-    font-weight: 700;
+    font-weight: $text-weight-bold;
     margin-bottom: 72px;
   }
   form {
@@ -16,9 +17,9 @@
     max-width: 760px;
     width: 100%;
     .errors {
-      color: rgb(171, 23, 23);
-      font-family: Inter;
-      font-size: 14px;
+      color: $error;
+      font-family: $text-family-inter;
+      font-size: $text-size-small;
       margin-top: 10px;
       padding-left: 17px;
     }
@@ -30,11 +31,10 @@
     padding: 16px;
     border-radius: 16px;
     gap: 16px;
-    background-color: #3939390D;
-    
+    background-color: $input-bg;
     input {
-      font-family: Inter;
-      font-size: 14px;
+      font-family: $text-family-inter;
+      font-size: $text-size-small;
       display: flex;
       flex-grow: 1;
     }
@@ -48,10 +48,10 @@
       display: flex;
       justify-content: end;
       align-items: center;
-      font-family: Inter;
+      font-family: $text-family-inter;
       gap: 20px;
       select {
-        background-color: #3939390D;
+        background-color: $input-bg;
         padding: 5px;
         border-radius: 10px;
       }

@@ -1,0 +1,16 @@
+@import '../../theme.scss';
+.bookmark-btn {
+  height: fit-content;
+  align-self: center;
+  padding: 17px 17.5px;
+  background-color: $fav-btn-bg;
+  border: 1px solid $fav-btn-border;
+  border-radius: 50px;
+  transition: 0.3s ease;
+  svg {
+    display: block;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+}

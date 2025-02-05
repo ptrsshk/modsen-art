@@ -1,5 +1,6 @@
 import axios from 'axios'
-import { IArtworkCard } from '../types/types'
+
+import { IArtworkCard, IFavorite } from '../types'
 
 const $host = axios.create({
   baseURL: 'https://api.artic.edu/api/v1/artworks',
@@ -16,6 +17,14 @@ export const fetchFavouriteArtwork = async (id: number) => {
     )
   ).data
   return response
+}
+export const fetchFavouriteArtworks = async (favourites: IFavorite[]) => {
+  const artworks = await Promise.all(
+    favourites.map((favourite) =>
+      fetchFavouriteArtwork(favourite.id).then((res) => res.data)
+    )
+  )
+  return artworks
 }
 export const fetchArtwork = async (id: number) => {
   const response = (await $host.get(`/${id}`)).data

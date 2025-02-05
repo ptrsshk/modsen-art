@@ -1,16 +1,14 @@
+@import '../../theme.scss';
+
 header {
+  position: fixed;
+  z-index: 10;
   display: flex;
   justify-content: center;
   width: 100%;
   padding: 32px 0;
-  font-family: 'Inter';
-  background: rgb(52, 51, 51);
-  background: linear-gradient(
-    90deg,
-    rgba(52, 51, 51, 1) 0%,
-    rgba(72, 72, 72, 1) 70%,
-    rgba(40, 40, 40, 1) 100%
-  );
+  font-family: $text-family-inter;
+  background: $header-gradient;
   nav {
     max-width: 1280px;
     width: 100%;
@@ -21,12 +19,31 @@ header {
     .links-container {
       display: flex;
       gap: 24px;
+      @media (max-width: 768px) {
+        position: fixed;
+        background: $header-bg;
+        background: linear-gradient(90deg);
+        width: 100%;
+        height: calc(100% - $header-height);
+        top: $header-height;
+        left: 100%;
+
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.3s ease-in-out;
+        &.menu-opened {
+          transform: translateX(-100%);
+        }
+        .navigation-link {
+          justify-content: center;
+        }
+      }
     }
     a {
       display: flex;
       align-items: center;
       gap: 4px;
-      color: white;
+      color: $white;
     }
   }
 }
