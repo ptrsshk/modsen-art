@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router'
 import { ArtworkVariant } from 'src/constants/ArtworkVariant'
 import { IArtworkCard } from 'src/types'
 import { checkIsFavourite, setIsFavourite } from 'src/utils/FavouritesManager'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, Mock, vi } from 'vitest'
 
 import { ArtworkCard } from '.'
 
@@ -31,7 +31,7 @@ const mockArtwork: IArtworkCard = {
 
 describe('ArtworkCard', () => {
   it('renders artwork card with image', () => {
-    ;(checkIsFavourite as vi.Mock).mockReturnValue(false)
+    ;(checkIsFavourite as Mock).mockReturnValue(false)
 
     render(
       <MemoryRouter>
@@ -46,7 +46,7 @@ describe('ArtworkCard', () => {
   })
 
   it('renders museum icon when image is not available', () => {
-    const artworkWithoutImage = { ...mockArtwork, image_id: null }
+    const artworkWithoutImage = { ...mockArtwork, image_id: '' }
     render(
       <MemoryRouter>
         <ArtworkCard
@@ -60,7 +60,7 @@ describe('ArtworkCard', () => {
   })
 
   it('handles card click', () => {
-    ;(checkIsFavourite as vi.Mock).mockReturnValue(false)
+    ;(checkIsFavourite as Mock).mockReturnValue(false)
     render(
       <MemoryRouter>
         <ArtworkCard artwork={mockArtwork} variant={ArtworkVariant.small} />
@@ -72,7 +72,7 @@ describe('ArtworkCard', () => {
   })
 
   it('handles bookmark button click', () => {
-    ;(checkIsFavourite as vi.Mock).mockReturnValue(false)
+    ;(checkIsFavourite as Mock).mockReturnValue(false)
     render(
       <MemoryRouter>
         <ArtworkCard artwork={mockArtwork} variant={ArtworkVariant.small} />

@@ -1,15 +1,19 @@
 import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router'
 import { useFetchArtwork } from 'src/hooks/useFetchArtwork'
+import { IArtworkDetailed } from 'src/types'
 import { describe, expect, it, vi } from 'vitest'
 
 import { ArtworkDetailedSection } from '.'
 
-vi.mock('src/hooks/useFetchArtwork')
+// Mock the useFetchArtwork hook
+vi.mock('src/hooks/useFetchArtwork', () => ({
+  useFetchArtwork: vi.fn(),
+}))
 
 describe('ArtworkDetailedSection', () => {
   it('renders loader while fetching data', () => {
-    useFetchArtwork.mockReturnValue({
+    ;(useFetchArtwork as ReturnType<typeof vi.fn>).mockReturnValue({
       artwork: null,
       isLoading: true,
       error: '',
@@ -25,7 +29,7 @@ describe('ArtworkDetailedSection', () => {
   })
 
   it('renders error message when there is an error', () => {
-    useFetchArtwork.mockReturnValue({
+    ;(useFetchArtwork as ReturnType<typeof vi.fn>).mockReturnValue({
       artwork: null,
       isLoading: false,
       error: 'Error in fetching data',
@@ -37,11 +41,12 @@ describe('ArtworkDetailedSection', () => {
       </MemoryRouter>
     )
 
+    expect(screen.getByTestId('error')).toBeInTheDocument()
     expect(screen.getByText(/error in fetching data/i)).toBeInTheDocument()
   })
 
   it('renders artwork details when data is fetched successfully', () => {
-    useFetchArtwork.mockReturnValue({
+    ;(useFetchArtwork as ReturnType<typeof vi.fn>).mockReturnValue({
       artwork: {
         id: 123,
         title: 'Artwork Title',
@@ -54,7 +59,7 @@ describe('ArtworkDetailedSection', () => {
         credit_line: 'Credit Line',
         department_title: 'Department Title',
         copyright_notice: 'Public',
-      },
+      } as IArtworkDetailed,
       isLoading: false,
       error: '',
     })

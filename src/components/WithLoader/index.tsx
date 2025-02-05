@@ -12,7 +12,7 @@ export const WithLoader: FC<WithLoaderProps> = ({
   error,
 }) => {
   return error ? (
-    <div>{error}</div>
+    <div data-testid="error">{error}</div>
   ) : isLoading ? (
     <div className="loader-container">
       <div className="loader" data-testid="loader"></div>

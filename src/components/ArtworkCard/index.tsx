@@ -33,6 +33,7 @@ export const ArtworkCard: FC<ArtworkCardProps> = ({ artwork, variant }) => {
   return (
     <div
       className={variant === 'big' ? 'big artwork-card' : 'small artwork-card'}
+      data-testid="artwork-card-small"
     >
       {image_id ? (
         <img

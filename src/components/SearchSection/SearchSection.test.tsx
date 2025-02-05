@@ -1,7 +1,7 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { search } from 'src/api'
 import { IArtworkCard } from 'src/types'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, Mock, vi } from 'vitest'
 
 import { SearchSection } from '.'
 
@@ -10,7 +10,15 @@ vi.mock('src/api', () => ({
 }))
 
 vi.mock('src/components/WithLoader', () => ({
-  WithLoader: ({ isLoading, error, children }) => {
+  WithLoader: ({
+    isLoading,
+    error,
+    children,
+  }: {
+    isLoading: boolean
+    error: string
+    children: React.ReactNode
+  }) => {
     if (isLoading) return <div data-testid="loader"></div>
     if (error) return <div data-testid="error">{error}</div>
     return <>{children}</>
@@ -18,7 +26,7 @@ vi.mock('src/components/WithLoader', () => ({
 }))
 
 vi.mock('src/components/SearchSection/SearchResults', () => ({
-  SearchResults: ({ results }) => {
+  SearchResults: ({ results }: { results: IArtworkCard[] }) => {
     if (results.length === 0) {
       throw new Error('No results found')
     }
@@ -35,8 +43,16 @@ vi.mock('src/components/SearchSection/SearchResults', () => ({
 }))
 
 vi.mock('src/components/SearchSection/SearchForm', () => ({
-  SearchForm: ({ setResults, setLoading, setError }) => {
-    const handleSubmit = async (event) => {
+  SearchForm: ({
+    setResults,
+    setLoading,
+    setError,
+  }: {
+    setResults: React.Dispatch<React.SetStateAction<IArtworkCard[] | null>>
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+    setError: React.Dispatch<React.SetStateAction<string>>
+  }) => {
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault()
       setLoading(true)
       setError('')
@@ -78,7 +94,7 @@ describe('SearchSection', () => {
   })
 
   it('renders error message when there is an error', async () => {
-    ;(search as vi.Mock).mockRejectedValue(
+    ;(search as Mock).mockRejectedValue(
       new Error('Something went wrong while fetching data')
     )
 
@@ -112,7 +128,7 @@ describe('SearchSection', () => {
       },
     ]
 
-    ;(search as vi.Mock).mockResolvedValue(mockResults)
+    ;(search as Mock).mockResolvedValue(mockResults)
 
     render(<SearchSection />)
 
@@ -126,7 +142,7 @@ describe('SearchSection', () => {
 
   it('renders error boundary message when there are no search results', async () => {
     const mockResults: IArtworkCard[] = []
-    ;(search as vi.Mock).mockResolvedValue(mockResults)
+    ;(search as Mock).mockResolvedValue(mockResults)
 
     render(<SearchSection />)
 

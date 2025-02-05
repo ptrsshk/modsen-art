@@ -24,7 +24,10 @@ export const FavouritesSection: FC = () => {
         </div>
         {
           <WithLoader isLoading={isLoading} error={error}>
-            <div className="small-card-container">
+            <div
+              className="small-card-container"
+              data-testid="artwork-card-list"
+            >
               <ArtworkCardList
                 artworks={artworks}
                 variant={ArtworkVariant.small}

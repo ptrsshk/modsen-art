@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { setIsFavourite } from 'src/utils/FavouritesManager'
-import { describe, expect, it, vi } from 'vitest'
+import { describe, expect, it, Mock, vi } from 'vitest'
 
 import { BookmarkButton } from '.'
 
@@ -51,7 +51,7 @@ describe('BookmarkButton', () => {
   })
 
   it('handles click and updates bookmark state', () => {
-    ;(setIsFavourite as vi.Mock).mockReturnValue(true)
+    ;(setIsFavourite as Mock).mockReturnValue(true)
 
     render(
       <BookmarkButton
