@@ -7,6 +7,7 @@ export const MuseumIcon = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className="museum-icon"
+      data-testid="museum-icon"
     >
       <path
         d="M1.22046 49H44.2205"

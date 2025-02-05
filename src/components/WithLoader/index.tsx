@@ -15,7 +15,7 @@ export const WithLoader: FC<WithLoaderProps> = ({
     <div>{error}</div>
   ) : isLoading ? (
     <div className="loader-container">
-      <div className="loader"></div>
+      <div className="loader" data-testid="loader"></div>
     </div>
   ) : (
     <>{children}</>
